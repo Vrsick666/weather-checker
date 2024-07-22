@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Forecast</title>
+<style>
+  .forecast-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .forecast-item {
+    width: 150px;
+    margin: 10px;
+    align-self: left;
+  }
+  .search-bar {
+    margin-left: 40em;
+    top
+  }
+</style>
+</head>
+<body>
+
+<div class="search-bar">
+  <form action="/search" method="get">
+          <input type="text" name="city" placeholder="Search...">
+          <button type="submit">Search</button>
+  </form>
+</div>
+
+<h1>Прогноз погоды на следующие 7 дней</h1>
+{% for hour in forecast %}
+<div class="forecast-container">
+  <!-- Прогноз на каждый час -->
+  <div class="forecast-item" style="background-color: #f0f0f0;">
+    <div class="date">{{hour[0]}}</div>
+    <div class="temperature">{{hour[1]}}°C</div>
+    <div class="precipitation">Осадки: {{"%.1f"%hour[2]}} мм</div>
+  </div>
+  <!-- ... и так далее для каждого часа -->
+</div>
+{% endfor %}
+
+</body>
+</html>
